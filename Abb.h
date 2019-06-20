@@ -19,7 +19,7 @@ public:
 	//Descripcion:Constructor con parametros
 	//Pre:El parametro pasado debe ser valido
 	//Post:Se creo un arbol con un elemento
-	Abb(Nodo_abb* nueva_raiz);
+	Abb(Nodo_abb* nueva_raiz, int nueva_altura);
 	
 	//Pre:El objteto debe existir
 	//Post:Se devuelve la raiz del arbol
@@ -33,6 +33,9 @@ public:
 	//Post:Se modifico la raiz del arbol por el valor pasado por parametro
 	void asignar_raiz(Nodo_abb* nueva_raiz);
 
+	//Descripcion:Destructor
+	//Pre:El objeto debe existir
+	//Post:El objeto es destruido
 	~Abb();
 
 	 
