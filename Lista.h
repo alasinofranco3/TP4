@@ -1,7 +1,7 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include "Nodo.h"
+#include "Nodo_lista.h"
 template <typename Dato>
 class Lista{
 private:
