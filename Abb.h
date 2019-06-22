@@ -37,6 +37,14 @@ class Abb{
 		//Post:Se modifico la raiz del arbol por el valor pasado por parametro
 		void asignar_raiz(Nodo_abb* nueva_raiz);
 
+		//Pre:El arbol debe existir
+		//Post:Indica si el arbol esta vacio o no
+		bool es_vacio();
+
+		//Pre:EL arbol debe existir y el parametro debe ser un puntero valido
+		//Post:Se agrego el nodo al arbol
+		void agregar(Nodo_abb* nodo_a_agregar);
+
 		//Descripcion:Destructor
 		//Pre:El objeto debe existir
 		//Post:El objeto es destruido
