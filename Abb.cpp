@@ -5,22 +5,15 @@ Abb::Abb(){
 	raiz = new Nodo_abb;
 	cout << "Pido Memoria Arbol" << endl;
 	raiz = NULL;
-	altura = 0;
 }
 
-Abb::Abb(Nodo_abb* nueva_raiz,int nueva_altura){
+Abb::Abb(Nodo_abb* nueva_raiz){
 	raiz = new Nodo_abb;
-	altura = new int;
 	raiz = nueva_raiz;
-	*altura = nueva_altura;
 }
 
 Nodo_abb* Abb::obtener_raiz(){
 	return raiz;
-}
-
-int Abb::obtener_altura(){
-	return *altura;
 }
 
 void Abb::asignar_raiz(Nodo_abb* nueva_raiz){
@@ -66,6 +59,5 @@ void Abb::agregar(Nodo_abb* nodo_a_agregar){
 Abb::~Abb(){
 
 	delete raiz;
-	delete altura;
-	cout << "Borro raiz y altura";
+	cout << "Borro raiz";
 }

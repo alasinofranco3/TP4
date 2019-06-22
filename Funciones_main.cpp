@@ -32,8 +32,6 @@ void cargar_clientes(string lectura, Lista<string>* clientes){
 
 
 void cargar_abb(ifstream& archivo,Abb* arbol){
-  Nodo_abb* aux1;
-  Nodo_abb* aux2;
   int cant_usuarios=0;
   string telefono, usuarios;
   while(!archivo.eof()){
@@ -56,21 +54,26 @@ void cargar_abb(ifstream& archivo,Abb* arbol){
 }
 
 
-bool buscar_telefono(int telefono, Abb* arbol){
+Nodo_abb* buscar_telefono(int telefono, Abb* arbol){
 
   Nodo_abb* aux = arbol -> obtener_raiz();
   bool fue_encontrado = false;
-  while(aux){
+  while(aux && !fue_encontrado){
 
     if(aux -> obtener_telefono() == telefono){
       fue_encontrado = true;
     }
 
-    if(telefono > aux->obtener_telefono())
+    else if(telefono > aux->obtener_telefono()){
       aux = aux -> obtener_hijo_der();
+    }
     else
       aux = aux -> obtener_hijo_izq();
   }
 
-  return fue_encontrado;
+  if (!aux){
+    cout<<"El telefono buscado no se encuentra registrado como cliente"<<endl;  
+  }
+
+  return aux;
 }
