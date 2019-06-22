@@ -53,6 +53,8 @@ class Nodo_abb{
 		//Post:Se modifico el objeto cliente
 		void asignar_cliente(Cliente* nuevo_cliente);
 
+		~Nodo_abb();
+
 };
 
 #endif // NODO_ABB_H

@@ -1,6 +1,9 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
+#include <iostream>
+using namespace std;
+
 class Cliente{
 
 private:
@@ -33,6 +36,8 @@ public:
 	//Pre:El objeto debe existir
 	//Post:Se modifica el numero de legajo
 	void asignar_legajo(int nuevo_legajo);
+
+	~Cliente();
 
 };	
 

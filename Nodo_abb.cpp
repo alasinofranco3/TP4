@@ -16,6 +16,7 @@ Nodo_abb::Nodo_abb(Nodo_abb* nuevo_hijo_izq,Nodo_abb* nuevo_hijo_der,int nuevo_t
 	hijo_der = nuevo_hijo_der;
 	*telefono = nuevo_telefono;
 	cliente = nuevo_cliente;
+	cout << "Pido Memoria Nodo_abb" << endl;
 }
 
 Nodo_abb* Nodo_abb::obtener_hijo_der(){
@@ -48,5 +49,13 @@ void Nodo_abb::asignar_telefono(int nuevo_telefono){
 
 void Nodo_abb::asignar_cliente(Cliente* nuevo_cliente){
 	cliente = nuevo_cliente;
+}
+
+Nodo_abb::~Nodo_abb(){
+	delete hijo_izq;
+	delete hijo_der;
+	delete telefono;
+	delete cliente ;
+	cout << "Borro Memoria Nodo_abb" << endl;
 }
 

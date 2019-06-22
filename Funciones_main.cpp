@@ -1,19 +1,18 @@
 #include "Funciones_main.h"
+using namespace std;
+
 
 int cantidad_espacios(string lectura){
 	int i=0,espacios=0;
 	while((char)lectura[i] != 0){
-		if(lectura[i] == " ")
+		if((char)lectura[i] == 32)
 			espacios++;
 		i++;
 	}
 	return espacios;
-
 }
 
-
-
-void cargar_clientes(string lectura,Lista<Cliente> clientes){
+void cargar_clientes(string lectura, Lista<string>* clientes){
     int pos_lista = 1;
     int i =0;
     int ant = 0;
@@ -21,53 +20,57 @@ void cargar_clientes(string lectura,Lista<Cliente> clientes){
     while( (char)lectura[i] != 0){
         if(lectura[i]==' ' || (char)lectura[i] == 9){
             cliente = lectura.substr(ant,i-ant);
-            clientes -> agregar()
+            clientes -> agregar(&cliente,pos_lista);
             ant = i + 1;
             pos_lista++;
         }
         i++;
     }
     cliente = lectura.substr(ant,i-ant);
-    Actor* Aactor = new Actor(actor);
-    actores -> agregar(Aactor, pos_lista);
+    clientes -> agregar(&cliente,pos_lista);
 }
 
 
-
-   
-
-void cargar_abb(ifstream* archivo,Abb* arbol){
-  int pos_lista = 1, cant_usuarios=0;
+void cargar_abb(ifstream& archivo,Abb* arbol){
+  Nodo_abb* aux1;
+  Nodo_abb* aux2;
+  int cant_usuarios=0;
   string telefono, usuarios;
   while(!archivo.eof()){
   	archivo >> telefono;
   	getline(archivo,usuarios);
-  	cant_usuarios = cantidad_espacios(string usuarios);
+  	cant_usuarios = cantidad_espacios(usuarios);
   	if(cant_usuarios > 1){
-  		Lista<Cliente>* clientes = new Lista<Cliente>; 
+  		Lista<string>* clientes = new Lista<string>; 
   		cargar_clientes(usuarios,clientes);
-  		Nodo_abb* aux = new Nodo_abb(0,0,atoi(telefono.c_str()),clientes);
+  		Familia* family = new Familia(clientes,true,00102322);
+  		Nodo_abb* aux1 = new Nodo_abb(0,0,atoi(telefono.c_str()),family);
+      arbol -> agregar(aux1);
   	}
   	else{
-  		Nodo_abb* aux = new Nodo_abb(0,0,atoi(telefono.c_str()),usuarios);
+  		Individuo* ind = new Individuo(&usuarios,true,00102332);
+  		Nodo_abb* aux2 = new Nodo_abb(0,0,atoi(telefono.c_str()),ind);
+      arbol -> agregar(aux2);
   	}
-
-
-  	arbol -> agregar(aux);
-
-
-
   }
-
 }
 
-        getline(archivo, nombre);
-        getline(archivo, genero);
-        getline(archivo, nota_s);
-        nota = atoi(nota_s.c_str());
-        getline(archivo, director);
-        getline(archivo, actores);
-        Pelicula* Nueva_pelicula = new Pelicula(nombre, genero, director, nota, actores);
-        lista -> agregar(Nueva_pelicula, pos_lista);
-        getline(archivo, aux);
-        pos_lista++;
+
+bool buscar_telefono(int telefono, Abb* arbol){
+
+  Nodo_abb* aux = arbol -> obtener_raiz();
+  bool fue_encontrado = false;
+  while(aux){
+
+    if(aux -> obtener_telefono() == telefono){
+      fue_encontrado = true;
+    }
+
+    if(telefono > aux->obtener_telefono())
+      aux = aux -> obtener_hijo_der();
+    else
+      aux = aux -> obtener_hijo_izq();
+  }
+
+  return fue_encontrado;
+}
