@@ -13,7 +13,7 @@ class Individuo : public Cliente{
 		//Descripcion:Constructor con parametros
 		//Pre:---
 		//Post:Crea un objeto individuo
-		Individuo(string* nuevo_nombre,bool nueva_alta,int nuevo_legajo);
+		Individuo(string* nuevo_nombre,bool nueva_alta,int nuevo_legajo, int nuevo_precio_base, char nuevo_tipo);
 
 		//Pre:El objeto debe existir
 		//Post:devuelve el nombre del individuo

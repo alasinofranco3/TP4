@@ -14,7 +14,7 @@ class Familia : public Cliente{
 		//Descripcion:Constructor con parametros
 		//Pre:---
 		//Post:Crea un objeto familia
-		Familia(Lista<string>* nueva_familiares,bool nueva_alta,int nuevo_legajo);
+		Familia(Lista<string>* nueva_familiares,bool nueva_alta,int nuevo_legajo, int nuevo_precio_base, char nuevo_tipo);
 
 		//Pre:El objeto debe existir
 		//Post:Imprime por pantalla la familia

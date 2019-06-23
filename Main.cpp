@@ -14,7 +14,7 @@ int main(){
 	}
 
 	cargar_abb(archivo,ppal);
-
+	char comando;
 	menu();
 	cout<<"Ingrese un comando"<< endl;
         cin>> comando;

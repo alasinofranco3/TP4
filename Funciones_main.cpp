@@ -10,8 +10,8 @@ cout<<"-------------------------------------------------------------------------
         cout<<"a. Mostrar monto a abonar del producto"<< endl;
         cout<<"b. Agregar cliente"<< endl;
         cout<<"c. Dar de baja a un cliente"<< endl;
-        cout<<"d. Listar clientes"
-        cout<<"e. Buscar cliente por numero de telefono"
+        cout<<"d. Listar clientes";
+        cout<<"e. Buscar cliente por numero de telefono";
         cout<<"f. Salir de la aplicacion"<< endl;    
 
         cout<<"---------------------------------------------------------------------------------------------------------------------------"<< endl;
@@ -63,12 +63,12 @@ void cargar_abb(ifstream& archivo,Abb* arbol){
   	if(cant_usuarios > 1){
   		Lista<string>* clientes = new Lista<string>; 
   		cargar_clientes(usuarios,clientes);
-  		Familia* family = new Familia(clientes,true,00102322);
+  		Familia* family = new Familia(clientes,true,00102322, 1231, 'F');
   		Nodo_abb* aux1 = new Nodo_abb(0,0,atoi(telefono.c_str()),family);
       arbol -> agregar(aux1);
   	}
   	else{
-  		Individuo* ind = new Individuo(&usuarios,true,00102332);
+  		Individuo* ind = new Individuo(&usuarios,true,00102332, 1222, 'i');
   		Nodo_abb* aux2 = new Nodo_abb(0,0,atoi(telefono.c_str()),ind);
       arbol -> agregar(aux2);
   	}
@@ -121,6 +121,11 @@ Nodo_abb* quitar_cliente(int telefono, Abb* arbol){ // hacerla void(?)
   bool quitar = false;
 
   aux->obtener_cliente()->asignar_alta(quitar);
-  cout<<"El cliente solicitado a sido eliminado">>endl;
+  cout<<"El cliente solicitado a sido eliminado"<<endl;
   return aux;
+}
+
+void agregar_cliente(){
+
+  
 }

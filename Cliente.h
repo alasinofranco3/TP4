@@ -3,19 +3,19 @@
 
 #include <iostream>
 using namespace std;
-const float descuento_familia 0,65
-const float descuento_individuo 0,9
+const float descuento_familia =  0.65;
+const float descuento_individuo = 0.9;
 
 class Cliente{
 
 private:
 	bool alta;
 	int* legajo;
-	int Precio_base;
+	int precio_base;
 	char tipo;
 
 public:
-
+	Cliente();
  	//Descripcion:Constructor con parametros
 	//Pre:---
 	//Post:Crea un objeto cliente
@@ -44,6 +44,8 @@ public:
 	//Pre:El objeto debe existir
 	//Post:Se modifica el numero de legajo
 	void asignar_legajo(int nuevo_legajo);
+
+	int obtener_precio_base();
 
 	//Descripcion:Destructor
 	//Pre:El objeto debe existir
