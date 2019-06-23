@@ -3,23 +3,23 @@
 
 #include <iostream>
 using namespace std;
+const float descuento_familia 0,65
+const float descuento_individuo 0,9
 
 class Cliente{
 
 private:
 	bool alta;
 	int* legajo;
+	int Precio_base;
+	char tipo;
 
 public:
- 	//Descripcion:Constructor sin parametros
-	//Pre:---
-	//Post:Crea un objeto cliente
- 	Cliente();                      ////// es al pedo crearlo sin parametros (?)
 
  	//Descripcion:Constructor con parametros
 	//Pre:---
 	//Post:Crea un objeto cliente
- 	Cliente(bool nueva_alta, int nuevo_legajo);
+ 	Cliente(bool nueva_alta, int nuevo_legajo, int nuevo_precio_base, char nuevo_tipo);
 
  	//Pre:El objeto debe existir
 	//Post:Devuelve si esta de alta o no
@@ -30,6 +30,14 @@ public:
 	int obtener_legajo();
 
 	//Pre:El objeto debe existir
+	//Post:Devuelve el precio base
+	int obtener_precio();
+
+	//Pre:El objeto debe existir
+	//Post:Devuelve el tipo cliente siendo F familia e I individuo
+	char obtener_tipo();
+
+	//Pre:El objeto debe existir
 	//Post:Se modifica el estado de alta
 	void asignar_alta(bool nueva_alta);
 
@@ -37,6 +45,9 @@ public:
 	//Post:Se modifica el numero de legajo
 	void asignar_legajo(int nuevo_legajo);
 
+	//Descripcion:Destructor
+	//Pre:El objeto debe existir
+	//Post:El objeto es destruido
 	virtual ~Cliente();
 
 };	

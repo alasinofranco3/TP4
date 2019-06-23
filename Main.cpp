@@ -14,11 +14,24 @@ int main(){
 	}
 
 	cargar_abb(archivo,ppal);
-	bool cond = buscar_telefono(12315121,ppal);
-	if(cond)
-		cout << "Fue Encontrado :)" << endl;
-	else
-		cout << "No Fue Encontrado :(" << endl;
+
+	menu();
+	cout<<"Ingrese un comando"<< endl;
+        cin>> comando;
+
+        while(comando != 'a' && comando != 'b' && comando != 'c' && comando != 'd' && comando != 'e' && comando != 'f'){
+
+            cout<<"Comando invalido"<<endl;
+            cout<<"Ingrese un comando"<< endl;
+            cin>> comando;
+            system("clear");
+
+        }
+	//bool cond = buscar_telefono(12315121,ppal);
+	//if(cond)
+	//	cout << "Fue Encontrado :)" << endl;
+	//else
+	//	cout << "No Fue Encontrado :(" << endl;
 	archivo.close();
 	delete ppal;
 	return 0;
