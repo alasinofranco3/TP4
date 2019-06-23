@@ -10,9 +10,10 @@ class Individuo : public Cliente{
 	private:
 		string* nombre;
 	public:
-		Individuo(string nuevo_nombre,bool nueva_alta,int nuevo_telefono);
+		Individuo(string* nuevo_nombre,bool nueva_alta,int nuevo_legajo);
 		string obtener_individuo();
-		void asignar_individuo(string nuevo_nombre);
+		void asignar_individuo(string* nuevo_nombre);
+		~Individuo();
 };
 
 #endif // INDIVIDUO_H

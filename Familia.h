@@ -11,9 +11,10 @@ class Familia : public Cliente{
 	private:
 		Lista<string>* familiares;
 	public:
-		Familia(Lista<Cliente> nueva_familiares,bool nueva_alta,int nuevo_telefono);
+		Familia(Lista<string>* nueva_familiares,bool nueva_alta,int nuevo_legajo);
 		void mostrar_familia();
-		void asignar_familia(Lista<string> nueva_familiares);
+		void asignar_familia(Lista<string>* nueva_familiares);
+		~Familia();
 
 };
 
