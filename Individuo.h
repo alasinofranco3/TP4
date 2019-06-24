@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Individuo : public Cliente{	
+class Individuo : public Cliente{
 	private:
 		string* nombre;
 	public:
@@ -23,8 +23,12 @@ class Individuo : public Cliente{
 		//Post:Modifica el nombre del individuo
 		void asignar_individuo(string* nuevo_nombre);
 
+        //Pre: El objeto debe existir
+        //Post: Se devuelve el tamanio del cliente
 		int obtener_tamanio_cliente();
 
+		//Pre: El objeto debe existir
+        //Post: Muestra los nombres del cliente/clientes
 		void mostrar_cliente();
 
 		//Descripcion:Destructor

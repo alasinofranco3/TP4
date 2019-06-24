@@ -24,10 +24,14 @@ class Familia : public Cliente{
 		//Post:Modifica la lista de famlia
 		void asignar_familia(Lista<string>* nueva_familiares);
 
+        //Pre: El objeto debe existir
+        //Post: Se devuelve el tamanio del cliente
 		int obtener_tamanio_cliente();
 
+        //Pre: El objeto debe existir
+        //Post: Muestra los nombres del cliente/clientes
 		void mostrar_cliente();//Nuevo mostrar_familia.
-		
+
 		//Descripcion:Destructor
 		//Pre:El objeto debe existir
 		//Post:El objeto es destruido
