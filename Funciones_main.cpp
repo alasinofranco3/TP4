@@ -121,6 +121,10 @@ float precio_producto(string telefono, Abb* arbol){
 
 	Nodo_abb* aux = buscar_telefono(telefono,arbol);
 
+  if(!aux){
+    return -1;
+  }
+
 	float precio_a_pagar;
 
 	if (aux->obtener_cliente()->obtener_tipo() == 'f'){
@@ -146,7 +150,7 @@ void dar_de_baja(string telefono, Abb* arbol){ // hacerla void(?)
 string* pedir_nombre(){
 	string nombre;
 	string* ptr_nombre= new string; // HABRIA QUE GUARDARLO EN MEMORIA ESTO NO?
-	cout<<"introduzca el nombre del cliente";
+	cout<<"introduzca el nombre del cliente"<<endl;
 	cin>>nombre;
 	ptr_nombre = &nombre;
 	return ptr_nombre;
@@ -184,11 +188,15 @@ void llenar_lista_familia(Lista<string>* familiares){
 
 string pedir_telefono(){
 	string telefono;
-	do{
-		cout<<"ingrese el numero de telefono"<<endl;
-		cin>>telefono;
-	}
-	while(telefono.length() != 8 && !atoi(telefono.c_str()));
+
+	cout<<"ingrese el numero de telefono"<<endl;
+	cin>>telefono;
+	
+	while(telefono.length() != 8 || !atoi(telefono.c_str())){
+    cout<<"El numero ingresado no es valido,recuerde que los telefonos deben ser numeros de 8 digitos"<<endl;
+    cout<<"ingrese el numero de telefono"<<endl;
+    cin>>telefono;
+  }
 	return telefono;
 	
 }

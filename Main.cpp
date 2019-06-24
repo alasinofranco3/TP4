@@ -37,7 +37,10 @@ int main(){
 			case 'a':{
 				telefono = pedir_telefono();
 				float precio_cliente = precio_producto(telefono,ppal);
-				cout << precio_cliente<<endl;
+				if (precio_cliente != -1){
+					cout <<"El monto a abonar es:" <<precio_cliente<<" pesos"<<endl;
+				}
+				
 				break;
 			}
 			case 'b':{
@@ -57,7 +60,9 @@ int main(){
 			case 'e':{
 				telefono = pedir_telefono();
 				Nodo_abb* aux = buscar_telefono(telefono,ppal);
-				cout << aux -> obtener_cliente() -> obtener_tamanio_cliente();
+				if(aux){
+					aux->obtener_cliente()->mostrar_cliente();
+				}
 				break;
 			}
 		}
