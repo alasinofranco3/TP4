@@ -17,12 +17,14 @@ int main(){
 	cargar_abb(archivo,ppal,PRECIO_BASE);
 	string telefono;
 	char comando;
+	bool seguir_operando = true;
 	
 
-	while(comando != 'f'){
-	menu();
-	cout<<"Ingrese un comando"<< endl;
-    cin>> comando;
+	while(seguir_operando == true){
+	
+		menu();
+		cout<<"Ingrese un comando"<< endl;
+    	cin>> comando;
 
 		while(comando != 'a' && comando != 'b' && comando != 'c' && comando != 'd' && comando != 'e' && comando != 'f'){
 
@@ -65,9 +67,13 @@ int main(){
 				}
 				break;
 			}
+			case 'f':{
+				seguir_operando = false;
+				
+			}
 		}
 		
 	}
-	delete ppal;
+
 	return 0;
 }
