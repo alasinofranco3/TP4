@@ -1,14 +1,20 @@
 #include "Familia.h"
 
-Familia::Familia(Lista<Cliente> nueva_familiares,bool nueva_alta,int nuevo_telefono) : Cliente(nueva_alta,nuevo_telefono){
-	familiares = new Lista<Cliente>;
-	*familiares = nueva_familiares;
+Familia::Familia(Lista<string>* nueva_familiares,bool nueva_alta,string nuevo_legajo, int nuevo_precio_base, char nuevo_tipo) : Cliente(nueva_alta,nuevo_legajo, nuevo_precio_base, nuevo_tipo){
+	familiares = new Lista<string>;
+	cout << "Pido Memoria Lista Familia" << endl;
+	familiares = nueva_familiares;
 }
 
 void Familia::mostrar_familia(){
 	//familiares.a_texto();
 }
 
-void Familia::asignar_familia(Lista<Cliente> nueva_familiares){
-	*familiares = nueva_familiares;
+void Familia::asignar_familia(Lista<string>* nueva_familiares){
+	familiares = nueva_familiares;
+}
+
+Familia::~Familia(){
+	delete familiares;
+	cout << "Borro Familiares" << endl;
 }

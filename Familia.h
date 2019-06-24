@@ -11,9 +11,23 @@ class Familia : public Cliente{
 	private:
 		Lista<string>* familiares;
 	public:
-		Familia(Lista<Cliente> nueva_familiares,bool nueva_alta,int nuevo_telefono);
+		//Descripcion:Constructor con parametros
+		//Pre:---
+		//Post:Crea un objeto familia
+		Familia(Lista<string>* nueva_familiares,bool nueva_alta,string nuevo_legajo, int nuevo_precio_base, char nuevo_tipo);
+
+		//Pre:El objeto debe existir
+		//Post:Imprime por pantalla la familia
 		void mostrar_familia();
-		void asignar_familia(Lista<string> nueva_familiares);
+
+		//Pre:El objeto debe existir
+		//Post:Modifica la lista de famlia
+		void asignar_familia(Lista<string>* nueva_familiares);
+
+		//Descripcion:Destructor
+		//Pre:El objeto debe existir
+		//Post:El objeto es destruido
+		~Familia();
 
 };
 
