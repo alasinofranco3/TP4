@@ -45,10 +45,16 @@ public:
 	//Post:Se modifica el numero de legajo
 	void asignar_legajo(string nuevo_legajo);
 
+    //Pre: El objeto debe existir
+    //Post: Devuelve el precio base del cliente
 	int obtener_precio_base();
 
+    //Pre: El objeto debe existir
+    //Post: Devuelve el tamanio del cliente que representa la cantidad de miembros
 	virtual int obtener_tamanio_cliente();
 
+    //Pre: El objeto debe existir
+    //Post: Devuelve los nombres/nombre del cliente
 	virtual void mostrar_cliente();
 
 	//Descripcion:Destructor
@@ -56,6 +62,6 @@ public:
 	//Post:El objeto es destruido
 	virtual ~Cliente();
 
-};	
+};
 
 #endif // CLIENTE_H
