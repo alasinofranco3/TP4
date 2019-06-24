@@ -21,10 +21,11 @@ int main(){
 
         while(comando != 'a' && comando != 'b' && comando != 'c' && comando != 'd' && comando != 'e' && comando != 'f'){
 
+    		system("clear");
             cout<<"Comando invalido"<<endl;
+            menu();
             cout<<"Ingrese un comando"<< endl;
             cin>> comando;
-            system("clear");
 
         }
 	//bool cond = buscar_telefono(12315121,ppal);

@@ -17,7 +17,9 @@ void cargar_clientes(string lectura, Lista<string>* clientes);
 void cargar_abb(ifstream& archivo,Abb* arbol);
 Nodo_abb* buscar_telefono(int telefono, Abb* arbol);
 int precio_producto(int telefono, Abb* arbol);
-
+string pedir_nombre();
+int pedir_legajo();
+void agregar_cliente(int precio_base,Abb* arbol);
 
 
 #endif // FUNCIONES_MAIN_H

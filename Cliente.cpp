@@ -1,6 +1,9 @@
 #include "Cliente.h"
 Cliente::Cliente(){
-	
+	alta = true;
+	legajo = 0;
+	precio_base = 0;
+	char tipo = 'N'
 }
 
 Cliente::Cliente(bool nueva_alta, int nuevo_legajo, int nuevo_precio_base, char nuevo_tipo){
