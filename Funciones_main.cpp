@@ -27,6 +27,7 @@ int cantidad_espacios(string lectura){
 	return espacios;
 }
 
+
 void cargar_clientes(string lectura, Lista<string>* clientes){
     int pos_lista = 1;
     int i = 0;
@@ -57,23 +58,23 @@ void cargar_abb(ifstream& archivo,Abb* arbol,int precio_base){
   int n_legajo = 100000;
   string telefono, usuarios,s_legajo;
   while(!archivo.eof()){
-  	archivo >> telefono;
-  	getline(archivo,usuarios);
+    archivo >> telefono;
+    getline(archivo,usuarios);
     s_legajo = "00"+to_string(n_legajo);
-  	cant_usuarios = cantidad_espacios(usuarios);
+    cant_usuarios = cantidad_espacios(usuarios);
     cout<<"Cantidad de clientes:" << cant_usuarios<< endl;
-  	if(cant_usuarios > 1){
-  		Lista<string>* clientes = new Lista<string>; 
-  		cargar_clientes(usuarios,clientes);
-  		Familia* family = new Familia(clientes,true,s_legajo, precio_base, 'f');
-  		Nodo_abb* aux1 = new Nodo_abb(0,0,telefono,family);
+    if(cant_usuarios > 1){
+      Lista<string>* clientes = new Lista<string>; 
+      cargar_clientes(usuarios,clientes);
+      Familia* family = new Familia(clientes,true,s_legajo, precio_base, 'f');
+      Nodo_abb* aux1 = new Nodo_abb(0,0,telefono,family);
       arbol -> agregar(aux1);
-  	}
-  	else{
-  		Individuo* ind = new Individuo(&usuarios,true,s_legajo, precio_base, 'i');
-  		Nodo_abb* aux2 = new Nodo_abb(0,0,telefono,ind);
+    }
+    else{
+      Individuo* ind = new Individuo(&usuarios,true,s_legajo, precio_base, 'i');
+      Nodo_abb* aux2 = new Nodo_abb(0,0,telefono,ind);
       arbol -> agregar(aux2);
-  	}
+    }
     n_legajo++;
   }
 }
@@ -112,7 +113,8 @@ int precio_producto(string telefono, Abb* arbol){
   int precio_a_pagar;
 
   if (aux->obtener_cliente()->obtener_tipo() == 'f'){
-    precio_a_pagar = (aux->obtener_cliente()->obtener_precio_base())*descuento_familia;
+    int cant_familiares = aux->obtener_cliente()->obtener_tamanio_cliente();
+    precio_a_pagar = (aux->obtener_cliente()->obtener_precio_base())*descuento_familia*cant_familiares;
   } else {
       precio_a_pagar = (aux->obtener_cliente()->obtener_precio_base())*descuento_individuo;
     }
@@ -127,13 +129,16 @@ void dar_de_baja(string telefono, Abb* arbol){ // hacerla void(?)
 
   aux->obtener_cliente()->asignar_alta(baja);
   cout<<"El cliente solicitado ha sido dado de baja"<<endl;
+  
 }
 
 string* pedir_nombre(){
-  string* nombre;
+  string nombre;
+  string* ptr_nombre; // HABRIA QUE GUARDARLO EN MEMORIA ESTO NO?
   cout<<"introduzca el nombre del cliente";
-  cin>>*nombre;
-  return nombre;
+  cin>>nombre;
+  ptr_nombre = &nombre;
+  return ptr_nombre;
 }
 
 int pedir_legajo(char tipo_cliente){
@@ -166,18 +171,23 @@ void llenar_lista_familia(Lista<string>* familiares){
   }
 }
 
-
 string pedir_telefono(){
   string telefono;
   do{
-  cout << "Ingrese N° Telefono: ";
-  cin>> telefono;
+    cout<<"ingrese el numero de telefono"<<endl;
+    cin>>telefono;
   }
   while(telefono.length() != 8 && !atoi(telefono.c_str()));
   return telefono;
+  
 }
 
-bool telefono_disponible(int telefono){
+bool telefono_disponible(string telefono,Abb* arbol){
+
+  if(buscar_telefono(telefono,arbol) == NULL){
+    return true;
+  }
+  return false;
 
 }
 
@@ -186,6 +196,7 @@ void agregar_cliente(int precio_base,Abb* arbol){
   char indicador_cliente;
   int nuevo_legajo;
   Cliente* ptr_cliente = new Cliente();
+  string s_legajo;
 
   cout<<"Ingrese i si el nuevo cliente es un individuo o f si es una familia"<<endl;
   cin>>indicador_cliente;
@@ -198,7 +209,7 @@ void agregar_cliente(int precio_base,Abb* arbol){
 
   if(indicador_cliente == 'i'){
     nuevo_legajo = pedir_legajo('i');
-    string s_legajo = to_string(nuevo_legajo);
+    s_legajo = to_string(nuevo_legajo);
     Individuo* ind = new Individuo(pedir_nombre(),true,s_legajo,precio_base,'i');
     ptr_cliente = ind;
   }
@@ -206,12 +217,18 @@ void agregar_cliente(int precio_base,Abb* arbol){
     nuevo_legajo = pedir_legajo('f');
     Lista<string>* familiares = new Lista<string>;
     llenar_lista_familia(familiares);
-    string s_legajo = to_string(nuevo_legajo);
-    //nuevo_legajo = pedir_legajo('f');
+    s_legajo = to_string(nuevo_legajo);
     Familia* familia = new Familia(familiares,true,s_legajo,precio_base,'f'); 
     ptr_cliente = familia;
   }
-  string n_telefono = "00" + to_string(nuevo_legajo);
+  string n_telefono = "00" + s_legajo;
+  
+  while(!telefono_disponible(n_telefono,arbol)){
+    nuevo_legajo ++;
+    s_legajo = to_string(nuevo_legajo);
+    n_telefono = "00" + s_legajo;
+  }
+
   Nodo_abb* aux = new Nodo_abb(0,0,n_telefono,ptr_cliente);
   
   arbol -> agregar(aux);

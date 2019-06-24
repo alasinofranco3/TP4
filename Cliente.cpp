@@ -5,7 +5,7 @@ Cliente::Cliente(){
 	alta = true;
 	//legajo = "";
 	precio_base = 0;
-	char tipo = 'N';
+	tipo = 'N';
 }
 
 Cliente::Cliente(bool nueva_alta, string nuevo_legajo, int nuevo_precio_base, char nuevo_tipo){
@@ -41,7 +41,9 @@ void Cliente::asignar_legajo(string nuevo_legajo){
 	*legajo = nuevo_legajo;
 }
 
-int Cliente::obtener_tamanio_cliente(){}
+int Cliente::obtener_tamanio_cliente(){
+	return 0;
+}
 
 Cliente::~Cliente(){
 	delete legajo;
