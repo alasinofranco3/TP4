@@ -83,11 +83,13 @@ void cargar_abb(ifstream& archivo,Abb* arbol,int precio_base){
 void listar_abb(Abb* arbol,Nodo_abb* raiz){
 	if(!raiz) return;
 	listar_abb(arbol,raiz -> obtener_hijo_izq());
-	cout << "---------------------------------------" <<endl;
-	cout << "Telefono: " << raiz -> obtener_telefono() << endl;
-	raiz -> obtener_cliente() -> mostrar_cliente();
-	cout << "---------------------------------------" <<endl;
-	listar_abb(arbol,raiz -> obtener_hijo_der());
+	if(raiz->obtener_cliente()->obtener_alta()){
+   cout << "---------------------------------------" <<endl;
+   cout << "Telefono: " << raiz -> obtener_telefono() << endl;
+	 raiz -> obtener_cliente() -> mostrar_cliente();
+	 cout << "---------------------------------------" <<endl;
+	}
+  listar_abb(arbol,raiz -> obtener_hijo_der());
 }
 
 
@@ -247,6 +249,8 @@ void agregar_cliente(int precio_base,Abb* arbol){
 		s_legajo = to_string(nuevo_legajo);
 		n_telefono = "00" + s_legajo;
 	}
+
+  cout<<"Se ha asignado un telefono correctamente"<<endl;
 
 	Nodo_abb* aux = new Nodo_abb(0,0,n_telefono,ptr_cliente);
 	

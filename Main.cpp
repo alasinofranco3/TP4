@@ -17,10 +17,10 @@ int main(){
 	cargar_abb(archivo,ppal,PRECIO_BASE);
 	string telefono;
 	char comando;
-	menu();
+	
 
 	while(comando != 'f'){
-
+	menu();
 	cout<<"Ingrese un comando"<< endl;
     cin>> comando;
 

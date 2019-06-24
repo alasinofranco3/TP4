@@ -13,11 +13,11 @@
 
 void menu();
     //Pre: El parametro lectura debe ser valido
-    //Post: Se devuelve la cantidad de espacios en la línea de lectura
+    //Post: Se devuelve la cantidad de espacios en la l?ea de lectura
     int cantidad_espacios(string lectura);
 
     //Pre: Debe recibir parametros validos
-    //Post: Carga los clientes en memoria dinámica
+    //Post: Carga los clientes en memoria din?ica
     void cargar_clientes(string lectura, Lista<string>* clientes);
 
     //Pre: El achivo debe ser valido y el ABB debe existir
@@ -34,7 +34,7 @@ void menu();
 
     //Pre: Los parametros deben ser validos y el abb existir
     //Post: Devuelve el precio del cliente en cuestion
-    int precio_producto(string telefono, Abb* arbol);
+    float precio_producto(string telefono, Abb* arbol);
 
     //Pre: El abb debe existir
     //Post: Devuelve todos los datos de los clientes del ABB
@@ -46,7 +46,7 @@ void menu();
 
     //Pre: -----
     //Post: Recibe un nombre valido
-    string* pedir_nombre();
+    string pedir_nombre();
 
     //Pre: -----
     //Post: Recibe un numero de legajo valido
