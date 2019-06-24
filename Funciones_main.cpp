@@ -102,6 +102,10 @@ Nodo_abb* buscar_telefono(string telefono, Abb* arbol){
   if (!aux){
     cout<<"El telefono buscado no se encuentra registrado como cliente"<<endl;  
   }
+  if (!aux->obtener_cliente()->obtener_alta()){
+    cout<<"El Cliente vinculado a este numero se encuentra dado de baja"<<endl;
+  }
+
 
   return aux;
 }
@@ -114,7 +118,7 @@ int precio_producto(string telefono, Abb* arbol){
 
   if (aux->obtener_cliente()->obtener_tipo() == 'f'){
     int cant_familiares = aux->obtener_cliente()->obtener_tamanio_cliente();
-    precio_a_pagar = (aux->obtener_cliente()->obtener_precio_base())*descuento_familia*cant_familiares;
+    precio_a_pagar = (aux->obtener_cliente()->obtener_precio_base())*descuento_familia*cant_familiares + 1;
   } else {
       precio_a_pagar = (aux->obtener_cliente()->obtener_precio_base())*descuento_individuo;
     }
@@ -126,10 +130,10 @@ void dar_de_baja(string telefono, Abb* arbol){ // hacerla void(?)
 
   Nodo_abb* aux = buscar_telefono(telefono,arbol);
   bool baja = false;
-
-  aux->obtener_cliente()->asignar_alta(baja);
-  cout<<"El cliente solicitado ha sido dado de baja"<<endl;
-  
+  if(aux){
+    aux->obtener_cliente()->asignar_alta(baja);
+    cout<<"El cliente solicitado ha sido dado de baja"<<endl;
+  }
 }
 
 string* pedir_nombre(){

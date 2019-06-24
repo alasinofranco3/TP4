@@ -36,8 +36,12 @@ int main(){
 	switch(comando){
 		case 'a':{
 			telefono = pedir_telefono();
+			Nodo_abb* aux = buscar_telefono(telefono,ppal);
+			while(!aux || !aux->obtener_cliente()->obtener_alta()){
+				telefono = pedir_telefono();
+			}
 			int precio_cliente = precio_producto(telefono,ppal);
-			cout << precio_cliente<<endl;
+			cout <<"El monto a abonar es:" <<precio_cliente<<" pesos"<<endl;
 			break;
 		}
 		case 'b':{
@@ -55,7 +59,10 @@ int main(){
 		case 'e':{
 			telefono = pedir_telefono();
 			Nodo_abb* aux = buscar_telefono(telefono,ppal);
-			cout << aux -> obtener_cliente() -> obtener_tamanio_cliente();
+			if(aux != NULL){
+				cout << "Persona/s vinculada/s a este numero:"<<endl;;
+				//HAY QUE IMPRIMIR POR PANTALLA EL NUMERO Y LOS NOMBRES DE LOS CLIENTES
+			}
 			break;
 		}
 		case 'f':{
