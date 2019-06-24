@@ -10,9 +10,25 @@ class Individuo : public Cliente{
 	private:
 		string* nombre;
 	public:
-		Individuo(string nuevo_nombre,bool nueva_alta,int nuevo_telefono);
+		//Descripcion:Constructor con parametros
+		//Pre:---
+		//Post:Crea un objeto individuo
+		Individuo(string* nuevo_nombre,bool nueva_alta,string nuevo_legajo, int nuevo_precio_base, char nuevo_tipo);
+
+		//Pre:El objeto debe existir
+		//Post:devuelve el nombre del individuo
 		string obtener_individuo();
-		void asignar_individuo(string nuevo_nombre);
+
+		//Pre:El objeto debe existir
+		//Post:Modifica el nombre del individuo
+		void asignar_individuo(string* nuevo_nombre);
+
+		int obtener_tamanio_cliente();
+
+		//Descripcion:Destructor
+		//Pre:El objeto debe existir
+		//Post:El objeto es destruido
+		~Individuo();
 };
 
 #endif // INDIVIDUO_H
