@@ -147,13 +147,11 @@ void dar_de_baja(string telefono, Abb* arbol){ // hacerla void(?)
 	
 }
 
-string* pedir_nombre(){
+string pedir_nombre(){
 	string nombre;
-	string* ptr_nombre= new string; // HABRIA QUE GUARDARLO EN MEMORIA ESTO NO?
 	cout<<"introduzca el nombre del cliente"<<endl;
 	cin>>nombre;
-	ptr_nombre = &nombre;
-	return ptr_nombre;
+	return nombre;
 }
 
 int pedir_legajo(char tipo_cliente){
@@ -174,10 +172,9 @@ void llenar_lista_familia(Lista<string>* familiares){
 	char seguir_agregando = 's';
 	while(seguir_agregando == 's'){
 		string nombre;
-		string* ptr_nombre = new string;
-		ptr_nombre = &nombre;
 		cout<<"Ingrese el nombre del familiar que desea agregar"<<endl;
 		cin>>nombre;
+		string* ptr_nombre = new string(nombre);
 		familiares->agregar(ptr_nombre,1);
 		cout<<"Se ha agregado el familiar deseado"<<endl;
 		cout<<"Ingrese s si desea agregar otro familiar"<<endl;
@@ -215,6 +212,7 @@ void agregar_cliente(int precio_base,Abb* arbol){
 	int nuevo_legajo;
 	Cliente* ptr_cliente = new Cliente();
 	string s_legajo;
+	string* s_nombre;
 
 	cout<<"Ingrese i si el nuevo cliente es un individuo o f si es una familia"<<endl;
 	cin>>indicador_cliente;
@@ -228,7 +226,10 @@ void agregar_cliente(int precio_base,Abb* arbol){
 	if(indicador_cliente == 'i'){
 		nuevo_legajo = pedir_legajo('i');
 		s_legajo = to_string(nuevo_legajo);
-		Individuo* ind = new Individuo(pedir_nombre(),true,s_legajo,precio_base,'i');
+
+		s_nombre = new string(pedir_nombre());
+
+		Individuo* ind = new Individuo(s_nombre,true,s_legajo,precio_base,'i');
 		ptr_cliente = ind;
 	}
 	else{

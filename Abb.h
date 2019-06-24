@@ -19,11 +19,11 @@ class Abb{
 		//Pre:El parametro pasado debe ser valido
 		//Post:Se creo un arbol con un elemento
 		Abb(Nodo_abb* nueva_raiz);
-
+		
 		//Pre:El objteto debe existir
 		//Post:Se devuelve la raiz del arbol
 		Nodo_abb* obtener_raiz();
-
+		
 		//Pre:El parametro pasado debe ser valido.El objteto debe existir
 		//Post:Se modifico la raiz del arbol por el valor pasado por parametro
 		void asignar_raiz(Nodo_abb* nueva_raiz);
@@ -36,14 +36,12 @@ class Abb{
 		//Post:Se agrego el nodo al arbol
 		void agregar(Nodo_abb* nodo_a_agregar);
 
-        //Pre:EL arbol debe existir y el parametro debe ser un puntero valido
-		//Post:Se eliminó el nodo al arbol
 		void borrar(Nodo_abb*);
 
 		//Descripcion:Destructor
 		//Pre:El objeto debe existir
 		//Post:El objeto es destruido
-		~Abb();
+		~Abb();	 
 };
 
 #endif // ABB_H
