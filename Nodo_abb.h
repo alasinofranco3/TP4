@@ -8,7 +8,7 @@ class Nodo_abb{
 	private:
 		Nodo_abb* hijo_izq;
 		Nodo_abb* hijo_der;
-		int* telefono;
+		string* telefono;
 		Cliente* cliente;
 	public:
 		//Descripcion:Constructor sin parametros
@@ -19,7 +19,7 @@ class Nodo_abb{
 		//Descripcion:Constructor con parametros
 		//Pre:---
 		//Post:Crea un objeto Nodo
-		Nodo_abb(Nodo_abb* nuevo_hijo_izq,Nodo_abb* nuevo_hijo_der,int nuevo_telefono,Cliente* nuevo_cliente);
+		Nodo_abb(Nodo_abb* nuevo_hijo_izq,Nodo_abb* nuevo_hijo_der,string nuevo_telefono,Cliente* nuevo_cliente);
 		
 		//Pre:El objeto debe existir
 		//Post:Devuelve el nodo del hijo derecho
@@ -31,7 +31,7 @@ class Nodo_abb{
 		
 		//Pre:El objeto debe existir
 		//Post:Devuelve el numero de telefono
-		int obtener_telefono();
+		string obtener_telefono();
 		
 		//Pre:El objeto debe existir
 		//Post:Devuelve el objeto cliente
@@ -47,11 +47,13 @@ class Nodo_abb{
 		
 		//Pre:El objeto debe existir
 		//Post:Se modifico el numero de telefono
-		void asignar_telefono(int nuevo_telefono);
+		void asignar_telefono(string nuevo_telefono);
 		
 		//Pre:El objeto debe existir
 		//Post:Se modifico el objeto cliente
 		void asignar_cliente(Cliente* nuevo_cliente);
+
+		~Nodo_abb();
 
 };
 
