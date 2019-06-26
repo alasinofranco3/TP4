@@ -35,42 +35,7 @@ int main(){
 		    cin>> comando;
 		}
 
-		switch(comando){
-			case 'a':{
-				telefono = pedir_telefono();
-				float precio_cliente = precio_producto(telefono,ppal);
-				if (precio_cliente != -1){
-					cout <<"El monto a abonar es:" <<precio_cliente<<" pesos"<<endl;
-				}
-				
-				break;
-			}
-			case 'b':{
-				agregar_cliente(PRECIO_BASE,ppal);
-				break;
-			}
-			case 'c':{
-				telefono = pedir_telefono();
-				dar_de_baja(telefono,ppal);
-				break;
-			}
-			case 'd':{
-				listar_abb(ppal,ppal -> obtener_raiz());
-				break;
-			}
-			case 'e':{
-				telefono = pedir_telefono();
-				Nodo_abb* aux = buscar_telefono(telefono,ppal);
-				if(aux){
-					aux->obtener_cliente()->mostrar_cliente();
-				}
-				break;
-			}
-			case 'f':{
-				seguir_operando = false;
-				
-			}
-		}
+		seguir_operando = operaciones(ppal,comando,telefono);
 		
 	}
 	delete ppal;

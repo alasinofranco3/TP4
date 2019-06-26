@@ -36,7 +36,8 @@ class Abb{
 		//Post:Se agrego el nodo al arbol
 		void agregar(Nodo_abb* nodo_a_agregar);
 
-
+		//Pre:El objeto nodo_abb debe existir
+		//Pos:Va a borrar el hijo izq y el hijo der del nodo
 		void borrar(Nodo_abb*);
 
 		//Descripcion:Destructor

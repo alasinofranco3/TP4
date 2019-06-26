@@ -48,5 +48,7 @@ void menu();
     //Post: Se agrega un nuevo cliente al abb
     void agregar_cliente(int precio_base,Abb* arbol);
 
-
+    //Pre:Los objetos deben existir y el arbol debe estar cargado
+    //Post:Se va a realizar la oparacion dependiendo del comando pasado por parametro
+    bool operaciones(Abb* ppal,char comando,string telefono);
 #endif // FUNCIONES_MAIN_H
