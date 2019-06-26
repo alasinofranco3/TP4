@@ -93,6 +93,7 @@ Nodo_lista<Dato>* Lista<Dato>::obtener_nodo(int pos){
 template <typename Dato>
 void Lista<Dato>::agregar(Dato* d, int pos){
 	Nodo_lista<Dato>* nuevo = new Nodo_lista<Dato>(d);
+	cout << "Pido memoria para el Nodo_lista<dato> en: " << nuevo << endl;
 	
 	if(es_vacia())
 		primero = nuevo;
@@ -121,6 +122,7 @@ void Lista<Dato>::eliminar(int pos){
 		anterior->asignar_siguiente(aux->obtener_siguiente());
 	}
 	tamanio--;
+	cout << "Elimino elemento de la lista ubicada en: " << aux << endl;
 	delete aux;
 }
 
